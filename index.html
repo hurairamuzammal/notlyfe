@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notlyfe — The Offline-First Academic & Semester Companion</title>
+  <meta name="description" content="Notlyfe is a fluid, offline-first semester workspace for computer science and engineering students. Track courses, calculate weighted CGPA, and take notes with zero lag.">
+  <meta name="keywords" content="Notlyfe, semester tracker, student notes, CGPA calculator, Flutter app, offline-first, Hive, Supabase">
+  <meta name="theme-color" content="#faf8f5">
+
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Notlyfe — The Offline-First Academic & Semester Companion">
+  <meta property="og:description" content="Zero cloud latency. Hive box local storage. Accurate CGPA calculator and smart course management designed with Android Material 3 Expressive styling.">
+  <meta property="og:image" content="assets/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit, Caveat, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Scroll Reading Progress -->
+  <div class="scroll-progress-bar" id="scroll-progress"></div>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-brand" aria-label="Notlyfe Home">
+        <img src="assets/logo.png" alt="Notlyfe" class="nav-logo-img">
+        <span class="nav-brand-text">Notlyfe</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#courses" class="nav-link">Courses</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://github.com/hurairamuzammal/notlyfe" target="_blank" rel="noopener noreferrer" class="btn-github" id="nav-github-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="#download" class="btn-cta-nav" id="nav-download-btn">Get App</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>v2.4 — Academic Engineering Suite</span>
+        </div>
+
+        <h1 class="hero-title">
+          The semester companion that keeps you ahead, <span class="highlight">never overwhelmed</span>.
+        </h1>
+
+        <p class="hero-subtitle">
+          Engineered for CS &amp; engineering students. Fast, offline-first note-taking, automated weighted CGPA calculations, and structured course management wrapped in fluid Android Material 3 Expressive styling.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#download" class="btn-primary-hero" id="hero-download-action">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download Release APK</span>
+          </a>
+
+          <a href="https://hurairamuzammal.github.io/notlyfe-reset/" target="_blank" rel="noopener noreferrer" class="btn-secondary-hero" id="hero-reset-action">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Reset Portal</span>
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat-item">
+            <span class="hero-stat-val">0 ms</span>
+            <span class="hero-stat-desc">Local Hive read latency</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-val">100%</span>
+            <span class="hero-stat-desc">Offline capable in dead zones</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-val">4.00</span>
+            <span class="hero-stat-desc">Weighted CGPA engine</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive 3D Phone Mockup -->
+      <div class="mockup-wrapper">
+        <div class="mockup-controls" role="tablist" aria-label="Interactive App Screen Switcher">
+          <button class="mockup-tab-btn active" data-tab="screen-courses" id="tab-courses" role="tab" aria-selected="true">Courses</button>
+          <button class="mockup-tab-btn" data-tab="screen-notes" id="tab-notes" role="tab" aria-selected="false">Notes</button>
+          <button class="mockup-tab-btn" data-tab="screen-cgpa" id="tab-cgpa" role="tab" aria-selected="false">CGPA</button>
+          <button class="mockup-tab-btn" data-tab="screen-todos" id="tab-todos" role="tab" aria-selected="false">Todos</button>
+        </div>
+
+        <div class="phone-frame" id="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            
+            <!-- Panel 1: Courses -->
+            <div class="screen-panel active" id="screen-courses" role="tabpanel" aria-labelledby="tab-courses">
+              <div class="screen-header">
+                <span class="screen-greeting">Fall Semester 2026</span>
+                <h3 class="screen-title">Active Courses</h3>
+              </div>
+
+              <div class="mini-course-grid">
+                <div class="mini-course-card">
+                  <span class="mini-course-badge">CS301 • 3 CR</span>
+                  <div class="mini-course-name">Computer Networks</div>
+                  <div class="mini-course-footer">92% Attendance</div>
+                </div>
+                <div class="mini-course-card">
+                  <span class="mini-course-badge">CS302 • 4 CR</span>
+                  <div class="mini-course-name">Database Systems</div>
+                  <div class="mini-course-footer">88% Attendance</div>
+                </div>
+                <div class="mini-course-card">
+                  <span class="mini-course-badge">CS201 • 3 CR</span>
+                  <div class="mini-course-name">Data Structures</div>
+                  <div class="mini-course-footer">96% Attendance</div>
+                </div>
+                <div class="mini-course-card">
+                  <span class="mini-course-badge">CS304 • 3 CR</span>
+                  <div class="mini-course-name">Web Engineering</div>
+                  <div class="mini-course-footer">90% Attendance</div>
+                </div>
+              </div>
+
+              <div class="mini-cgpa-row">
+                <span>Total Enrolled Credits</span>
+                <span style="color: var(--primary-amber);">13 Credit Hrs</span>
+              </div>
+            </div>
+
+            <!-- Panel 2: Smart Notes -->
+            <div class="screen-panel" id="screen-notes" role="tabpanel" aria-labelledby="tab-notes">
+              <div class="screen-header">
+                <span class="screen-greeting">Hive Storage</span>
+                <h3 class="screen-title">Lecture Notes</h3>
+              </div>
+
+              <div class="mini-note-card">
+                <div class="mini-note-title">InnoDB B+Tree Indexing</div>
+                <div class="mini-note-snippet">Clustered vs Secondary indexes. Leaf nodes form a bi-directional linked list...</div>
+                <span class="mini-note-tag">Database Systems</span>
+              </div>
+
+              <div class="mini-note-card">
+                <div class="mini-note-title">TCP Reno Congestion Control</div>
+                <div class="mini-note-snippet">Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery states...</div>
+                <span class="mini-note-tag">Networks</span>
+              </div>
+
+              <div class="mini-note-card">
+                <div class="mini-note-title">Red-Black Tree Invariants</div>
+                <div class="mini-note-snippet">Root is black. No two consecutive red nodes. Equal black height on all paths.</div>
+                <span class="mini-note-tag">Data Structures</span>
+              </div>
+            </div>
+
+            <!-- Panel 3: CGPA Engine -->
+            <div class="screen-panel" id="screen-cgpa" role="tabpanel" aria-labelledby="tab-cgpa">
+              <div class="screen-header">
+                <span class="screen-greeting">Academic Standing</span>
+                <h3 class="screen-title">Cumulative GPA</h3>
+              </div>
+
+              <div class="mini-cgpa-display" title="Click to test calculation cycle">
+                <div class="mini-cgpa-num">3.84</div>
+                <div class="mini-cgpa-label">Cumulative GPA • Dean's Honors</div>
+              </div>
+
+              <div class="mini-cgpa-row">
+                <span>Semester 5 SGPA</span>
+                <strong style="color: var(--primary-amber);">3.92</strong>
+              </div>
+              <div class="mini-cgpa-row">
+                <span>Semester 4 SGPA</span>
+                <strong>3.80</strong>
+              </div>
+              <div class="mini-cgpa-row">
+                <span>Total Earned Credits</span>
+                <strong>78 / 132</strong>
+              </div>
+            </div>
+
+            <!-- Panel 4: Todos -->
+            <div class="screen-panel" id="screen-todos" role="tabpanel" aria-labelledby="tab-todos">
+              <div class="screen-header">
+                <span class="screen-greeting">Assignments &amp; Labs</span>
+                <h3 class="screen-title">Action Items</h3>
+              </div>
+
+              <div class="mini-todo-item done">
+                <div class="mini-todo-check">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span class="mini-todo-title">Submit DB Assignment 3 (ERD)</span>
+              </div>
+
+              <div class="mini-todo-item">
+                <div class="mini-todo-check"></div>
+                <span class="mini-todo-title">Wire up Wireshark packet capture</span>
+              </div>
+
+              <div class="mini-todo-item">
+                <div class="mini-todo-check"></div>
+                <span class="mini-todo-title">Implement Trie prefix search in Dart</span>
+              </div>
+
+              <div class="mini-todo-item done">
+                <div class="mini-todo-check">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <span class="mini-todo-title">Review mid-term grade projections</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid Features Section -->
+    <section class="section reveal-on-scroll" id="features">
+      <div class="section-header">
+        <div class="section-eyebrow">Practical Engineering</div>
+        <h2 class="section-title">Designed for real semester workflows. Not marketing slop.</h2>
+        <p class="section-desc">
+          Every screen, cache policy, and calculation is crafted for high-stress university exam weeks when you need zero friction, zero latency, and rock-solid reliability.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        
+        <!-- Bento Card 1: Course Hub (Span 7) -->
+        <article class="bento-card bento-col-7">
+          <div class="bento-icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <h3 class="bento-title">Structured Course Syllabus &amp; Attendance Hub</h3>
+          <p class="bento-desc">
+            Organize core disciplines like Computer Networks, Database Systems, Data Structures, and Web Engineering. Keep syllabus breakdowns, professor notes, and your minimum attendance thresholds all in one place.
+          </p>
+          <ul class="bento-meta-list">
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Color-coded course identifiers with credit weight tracking</span>
+            </li>
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Instant attendance percentage warnings before exam fines</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Bento Card 2: Hive Offline (Span 5) -->
+        <article class="bento-card bento-col-5">
+          <div class="bento-icon-badge">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+          </div>
+          <h3 class="bento-title">Hive Local Storage</h3>
+          <p class="bento-desc">
+            Zero network lag. Apache Hive key-value boxes store your data locally in memory, guaranteeing instantaneous retrieval even inside underground auditoriums with no cellular service.
+          </p>
+          <ul class="bento-meta-list">
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Sub-millisecond read &amp; write cycles</span>
+            </li>
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero spinner waiting screens</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Bento Card 3: CGPA Engine (Span 5) -->
+        <article class="bento-card bento-col-5">
+          <div class="bento-icon-badge">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+          </div>
+          <h3 class="bento-title">Mathematical CGPA Precision</h3>
+          <p class="bento-desc">
+            No inaccurate generic percentage estimates. Calculates true grade points weighted by credit hour allocations across multiple semesters with simulated target scenarios.
+          </p>
+          <ul class="bento-meta-list">
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Weighted SGPA &amp; CGPA progression tracking</span>
+            </li>
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Standard 4.00 university scale support</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Bento Card 4: Supabase Sync (Span 7) -->
+        <article class="bento-card bento-col-7">
+          <div class="bento-icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+          </div>
+          <h3 class="bento-title">Cloud Sync &amp; External Password Recovery</h3>
+          <p class="bento-desc">
+            Seamlessly back up your notes to encrypted Supabase PostgreSQL. Switch devices freely and utilize the dedicated Notlyfe Web Recovery Portal for hassle-free password resets on any browser.
+          </p>
+          <ul class="bento-meta-list">
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Row Level Security (RLS) encrypted cloud records</span>
+            </li>
+            <li class="bento-meta-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Cross-platform GitHub Pages password recovery</span>
+            </li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Course Hub Showcase Section -->
+    <section class="section reveal-on-scroll" id="courses">
+      <div class="section-header">
+        <div class="section-eyebrow">Academic Curriculum</div>
+        <h2 class="section-title">Built with realistic computer science coursework.</h2>
+        <p class="section-desc">
+          Notlyfe includes dedicated visual badge identifiers for core university subjects so your dashboard is instantly legible.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        
+        <div class="tech-card" style="text-align: left; padding: 24px;">
+          <img src="assets/cn.png" alt="Computer Networks" style="width: 52px; height: 52px; object-fit: contain; margin-bottom: 14px; border-radius: 10px; background: #fff8eb; padding: 6px; border: 1px solid rgba(217, 119, 6, 0.2);">
+          <div class="tech-name">Computer Networks</div>
+          <div class="tech-role">CS301 • 3 Credit Hours</div>
+          <div class="tech-desc">OSI model, TCP/IP stack, routing protocols (OSPF, BGP), subnetting, socket programming, and packet analysis.</div>
+        </div>
+
+        <div class="tech-card" style="text-align: left; padding: 24px;">
+          <img src="assets/db.png" alt="Database Systems" style="width: 52px; height: 52px; object-fit: contain; margin-bottom: 14px; border-radius: 10px; background: #fff8eb; padding: 6px; border: 1px solid rgba(217, 119, 6, 0.2);">
+          <div class="tech-name">Database Systems</div>
+          <div class="tech-role">CS302 • 4 Credit Hours</div>
+          <div class="tech-desc">Relational algebra, SQL optimization, ACID transactions, B-Tree indexes, and normal forms (1NF to BCNF).</div>
+        </div>
+
+        <div class="tech-card" style="text-align: left; padding: 24px;">
+          <img src="assets/ds.png" alt="Data Structures" style="width: 52px; height: 52px; object-fit: contain; margin-bottom: 14px; border-radius: 10px; background: #fff8eb; padding: 6px; border: 1px solid rgba(217, 119, 6, 0.2);">
+          <div class="tech-name">Data Structures</div>
+          <div class="tech-role">CS201 • 3 Credit Hours</div>
+          <div class="tech-desc">Asymptotic complexity analysis, trees (AVL, Red-Black), graph traversal (BFS/DFS), and heap priority queues.</div>
+        </div>
+
+        <div class="tech-card" style="text-align: left; padding: 24px;">
+          <img src="assets/web.png" alt="Web Engineering" style="width: 52px; height: 52px; object-fit: contain; margin-bottom: 14px; border-radius: 10px; background: #fff8eb; padding: 6px; border: 1px solid rgba(217, 119, 6, 0.2);">
+          <div class="tech-name">Web Engineering</div>
+          <div class="tech-role">CS304 • 3 Credit Hours</div>
+          <div class="tech-desc">Client-server architecture, modern DOM standards, RESTful APIs, JWT stateful sessions, and web security.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Architecture & Tech Stack Section -->
+    <section class="section reveal-on-scroll" id="architecture">
+      <div class="section-header">
+        <div class="section-eyebrow">Engineering Architecture</div>
+        <h2 class="section-title">Clean engineering under the hood.</h2>
+        <p class="section-desc">
+          Crafted with industry-standard Dart tooling, declarative state management, and optimized offline databases.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-name">Flutter 3</div>
+          <div class="tech-role">Cross-Platform UI</div>
+          <div class="tech-desc">60-120 FPS high refresh rendering, native gesture physics, and Android Material 3 Expressive styling.</div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-name">Riverpod</div>
+          <div class="tech-role">State Management</div>
+          <div class="tech-desc">Compile-safe, decoupled state providers with zero boilerplate and predictable unidirectional data flow.</div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-name">Apache Hive</div>
+          <div class="tech-role">Local Database</div>
+          <div class="tech-desc">Pure Dart key-value storage engine with zero native SQLite bridge latency and instant serialization.</div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-name">Supabase</div>
+          <div class="tech-role">Cloud &amp; Auth</div>
+          <div class="tech-desc">PostgreSQL storage, JWT authentication, Row Level Security, and automated cloud sync capabilities.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="section reveal-on-scroll" id="faq">
+      <div class="section-header">
+        <div class="section-eyebrow">Got Questions?</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">
+          Honest answers about offline storage, sync, calculation formulas, and security.
+        </p>
+      </div>
+
+      <div class="faq-container">
+        
+        <div class="faq-item open">
+          <button class="faq-question-btn" type="button" aria-expanded="true">
+            <span>Does Notlyfe work when I have no Wi-Fi or cellular signal?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Yes, 100%. Notlyfe is built offline-first using embedded Hive database boxes. All your notes, course details, and grades reside in local storage directly on your device. When internet connectivity is restored, data effortlessly synchronizes with your cloud account.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button" aria-expanded="false">
+            <span>How does the CGPA calculator handle credit weightage?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            The GPA engine strictly calculates semester GPA using standard mathematical credit weighting: the sum of (Grade Points multiplied by Course Credit Hours) divided by the Total Credit Hours. Cumulative GPA is computed across all completed terms.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button" aria-expanded="false">
+            <span>How do I reset my password if I forget it?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            You can reset your password from any computer, tablet, or phone using the dedicated Notlyfe Web Recovery Portal at <a href="https://hurairamuzammal.github.io/notlyfe-reset/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-amber); font-weight: 600;">notlyfe-reset</a> without needing to reinstall the mobile app.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button" aria-expanded="false">
+            <span>Is Notlyfe open source?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Yes, Notlyfe is completely open source under the MIT license. You can inspect the source code, verify privacy guarantees, or contribute feature enhancements directly on GitHub.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="section reveal-on-scroll" id="download">
+      <div class="cta-banner">
+        <div class="cta-banner-glow"></div>
+        <h2 class="cta-headline">Take control of your semester today.</h2>
+        <p class="cta-subtitle">
+          Join engineering and computer science students who keep their courses organized, their notes accessible offline, and their GPA on target.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="https://github.com/hurairamuzammal/notlyfe/releases" target="_blank" rel="noopener noreferrer" class="btn-primary-hero" id="cta-apk-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download APK (Releases)</span>
+          </a>
+
+          <a href="https://github.com/hurairamuzammal/notlyfe" target="_blank" rel="noopener noreferrer" class="btn-secondary-hero" id="cta-star-btn" style="background: rgba(255, 255, 255, 0.1); color: #ffffff; border-color: rgba(255, 255, 255, 0.2);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>Star on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="assets/logo.png" alt="Notlyfe" style="width: 24px; height: 24px;">
+        <span class="footer-copy">&copy; 2026 Notlyfe. Built with Flutter, Hive &amp; Supabase.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://github.com/hurairamuzammal/notlyfe" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repository</a>
+        <a href="https://hurairamuzammal.github.io/notlyfe-reset/" target="_blank" rel="noopener noreferrer" class="footer-link">Password Reset Portal</a>
+        <a href="https://github.com/hurairamuzammal/notlyfe/issues" target="_blank" rel="noopener noreferrer" class="footer-link">Issues &amp; Feedback</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
