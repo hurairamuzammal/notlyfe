@@ -1,0 +1,38 @@
+# Security & Privacy Safeguards
+.env*
+*.key
+*.pem
+*.token
+*.sql
+*.gz
+*.backup*
+*.py
+*.pyc
+__pycache__/
+
+# Never include scraping, ML models, or private backend tools
+scarpy/
+scrapy/
+*scarpy*
+*scrapy*
+*crawler*
+score_predictor/
+win_wiz_predictor/
+scripts/
+
+# Environments & Dependencies
+myenv/
+venv/
+.venv/
+node_modules/
+
+# Flutter / Native Source and Build Artifacts
+build/
+.dart_tool/
+android/
+ios/
+lib/
+macos/
+windows/
+linux/
+test/
